@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -7,7 +8,8 @@ from django.contrib.auth.forms import UserCreationForm
 def index(request):
     massage = ""
     form = UserCreationForm()
-
+    # all,get,filter
+    print(User.objects.all())
     if request.method == "POST":
         print(request.POST)
         username = request.POST.get("username")
@@ -19,11 +21,15 @@ def index(request):
             massage = "密碼長度不正確"
         elif password1 != password2:
             massage = "兩次密碼不一樣"
+        else:
+            # 比對使用者是否存在
+            if User.objects.filter(username=username):
+                massage = "帳號已存在!"
 
-        # 密碼是否相同
-
-        # 比對使用者是否存在
-
-        # 註冊使用者
+            # 註冊使用者
+            else:
+                user = User.objects.create_user(username=username, password=password1)
+                user.save()
+                massage = "註冊成功!"
 
     return render(request, "user/register.html", {"form": form, "message": massage})
