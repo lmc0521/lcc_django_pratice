@@ -64,7 +64,7 @@
     <div class="text">{{todo.text|linebreaksbr}}</div>
     <div class="completed" style="background-color: aqua;">
         {% if todo.date_completed %}
-        <span style="color: blue;">已完成</span>
+        <span style="color: blue;">已完成:{{todo.date_completed}}</span>
         {% else %}
         進行中
         {% endif %}
