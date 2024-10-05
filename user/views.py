@@ -36,7 +36,7 @@ def user_login(request):
                 else:
                     login(request, user)
                     message = "登入成功!"
-                    return redirect("profile")
+                    return redirect("todolist")
 
     return render(
         request,
