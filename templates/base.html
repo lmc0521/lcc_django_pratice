@@ -45,12 +45,14 @@
         使用者:<span class="username">
             <a href="{% url 'profile' %}">{{user.username}}</a></span>
         <a class="button" href="{% url 'logout' %}">登出</a>
+        <a class="button" style="background-color: greenyellow;" href="{% url 'create-todo' %}">建立事項</a>
         {% else %}
         <a class="button" href="{% url 'login' %}">登入</a>
         <a class="button" style="background-color: gainsboro;" href="{% url 'register' %}">註冊</a>
 
         {% endif %}
-        <a class="button" style="background-color: aqua;" href="/">回首頁</a>
+        <a class="button" style="background-color: aqua;" href="{% url 'todolist' %}">回首頁</a>
+
     </div>
     <div id="container">
         {% block content %}

@@ -4,5 +4,12 @@
 
 {% block content %}
 <h1>Create Todo</h1>
-{{form.as_p}}
+<form action="" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    {% if form %}
+    <button type="submit">提交</button>
+    <button type="reset">清除</button>
+    {% endif %}
+</form>
 {% endblock %}

@@ -57,16 +57,18 @@
     <div class="created">{{todo.created}}</div>
     <div class="title">
         <a href="{% url 'todo' todo.id %}">{{todo.title}}</a>
-    </div>
-    <div class="text">{{todo.text}}</div>
-    <div class="imp">
         {% if todo.important %}
-        <span style="color:red">*重要</span>
-        {% else %}
-        <span style="color:blue">一般</span>
+        <span style="color:red">(重要)</span>
         {% endif %}
     </div>
-
+    <div class="text">{{todo.text|linebreaksbr}}</div>
+    <div class="completed" style="background-color: aqua;">
+        {% if todo.date_completed %}
+        <span style="color: blue;">已完成</span>
+        {% else %}
+        進行中
+        {% endif %}
+    </div>
 
 </div>
 
