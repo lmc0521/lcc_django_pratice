@@ -59,7 +59,7 @@
 
 
 {% for todo in todos %}
-{% if not todo.completed %}
+{% if todo.completed %}
 <div class="todo">
     <div class="created">{{todo.created}}</div>
     <a class="button del-button" href="{% url 'delete-todo' todo.id %}" onclick="return confirm('確定刪除')">刪除</a>
@@ -71,11 +71,9 @@
     </div>
     <div class="text">{{todo.text|linebreaksbr}}</div>
     <div class="completed" style="background-color: aqua;">
-        {% if todo.date_completed %}
-        <span style="color: blue;">已完成:{{todo.date_completed}}</span>
-        {% else %}
-        進行中
-        {% endif %}
+
+        <span style="color: blue;">{{todo.date_completed}}</span>
+
     </div>
 </div>
 {% endif %}
